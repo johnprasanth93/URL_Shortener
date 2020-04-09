@@ -13,7 +13,7 @@
 <script src="js/custom.js"></script>
 <title>URL Shorten Application</title>
 </head>
-<body ng-app="demo">
+<body ng-app="demo" ng-controller="EmployeeCtrl">
 	<div class="containerNew">
 
 		<div class="starter-template">
@@ -25,7 +25,7 @@
 	<!-- /.container -->
 	<form name="inputForm" novalidate role="form">
 		<div class="container">
-			<div class="mainContent" ng-controller="EmployeeCtrl">
+			<div class="mainContent">
 
 				<div class="form-group">
 					<label class="lableNew">Source URL : </label> <input type="text"
@@ -49,6 +49,8 @@
 		</div>
 	</form>
 	<div class="footer-template">
+		<label> Number of hits:</label><input class='hitCounterText'
+			type="text" name="hitCount" ng-model="hitCount" disabled=True />
 		<p>Copyrights Neueda Pvt,Ltd. 2020 @ All rights reserved</p>
 	</div>
 </body>

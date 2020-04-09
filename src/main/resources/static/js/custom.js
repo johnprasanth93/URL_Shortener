@@ -1,16 +1,35 @@
 // Angularjs controller code goes here
 var demo = angular.module('demo', []);
 
-demo.controller("EmployeeCtrl", [ '$rootScope', '$scope', '$compile',
-		'$element', '$filter', '$http','$location',
-		function($rootScope, $scope, $compile, $element, $filter, $http,$location) {
-
+demo.controller("EmployeeCtrl", [
+		'$rootScope',
+		'$scope',
+		'$compile',
+		'$element',
+		'$filter',
+		'$http',
+		'$location',
+		'$interval',
+		function($rootScope, $scope, $compile, $element, $filter, $http,
+				$location, $interval) {
+			var srcURL = $location.absUrl();
+			// To get the number of hits. It will check every sec
+			$interval(function getHitCount() {
+				$http({
+					method : 'GET',
+					url : srcURL + "getSiteHitCount"
+				}).then(function success(res) {
+					$scope.hitCount = res.data;
+				}, function failure() {
+					console.log("Failed");
+					alert(resperr.message);
+				});
+			}, 10000);
 			$scope.OnSave = function(srcform) {
 
 				if ($scope.fullURL !== '' && $scope.fullURL !== undefined) {
 					srcform.fullURLs = [];
-					var srcURL = $location.absUrl();
-					var uploadUrl = srcURL+"shortenurl";
+					var uploadUrl = srcURL + "shortenurl";
 					srcform.fullURLs.push({
 						full_url : $scope.fullURL
 					});
@@ -28,9 +47,8 @@ demo.controller("EmployeeCtrl", [ '$rootScope', '$scope', '$compile',
 						alert("Short URL has been created" + result.short_url);
 						$http({
 							method : 'GET',
-							url : srcURL+"getURLs"
+							url : srcURL + "getURLs"
 						}).then(function success(res) {
-							console.log(res);
 							$scope.allURLS = res.data;
 						}, function failure() {
 							console.log("Failed");

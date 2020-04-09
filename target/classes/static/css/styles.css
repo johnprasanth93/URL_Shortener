@@ -39,9 +39,9 @@ h4 {
 }
 
 .footer-template {
-	padding: 3rem 1.5rem;
 	text-align: center;
-	height: 30px;
+	padding-top: 10px;
+	height: 68px;
 	background-color: #17aae2;
 }
 
@@ -78,4 +78,9 @@ input, select, textarea {
 	font-size: inherit;
 	line-height: inherit;
 	width: 500px;
+}
+
+.hitCounterText {
+	margin-left: 10px;
+	width: 40px;
 }

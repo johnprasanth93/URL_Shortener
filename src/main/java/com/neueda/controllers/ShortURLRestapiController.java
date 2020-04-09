@@ -27,9 +27,11 @@ import com.neueda.POJO.ShortURLPOJO;
 public class ShortURLRestapiController {
 
 	private final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+	int siteHitCounter = 0;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadIndex() {
+		siteHitCounter = siteHitCounter + 1;
 		return "index";
 	}
 
@@ -45,6 +47,7 @@ public class ShortURLRestapiController {
 	@RequestMapping(value = "/shortenurl", method = RequestMethod.POST)
 	public ResponseEntity<Object> getShortenUrl(HttpServletRequest request, @RequestBody ShortURLPOJO shortenUrl)
 			throws MalformedURLException {
+		siteHitCounter = siteHitCounter + 1;
 		LOGGER.debug("+++++++++++++ Create Short URL API has been triggered ++++++++++");
 		HttpServletRequest tmp = request;
 		String hostname = tmp.getLocalName();
@@ -62,13 +65,20 @@ public class ShortURLRestapiController {
 
 	@RequestMapping(value = "/getURLs", method = RequestMethod.GET)
 	public ResponseEntity<Object> getAllUrls(HttpServletResponse response) throws IOException {
+		siteHitCounter = siteHitCounter + 1;
 		LOGGER.debug("------------------- Returning all urls stored in the hashmap ----------");
 		return new ResponseEntity<Object>(shortenUrlList.values(), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/getSiteHitCount", method = RequestMethod.GET)
+	public ResponseEntity<Object> getSiteHitCount(HttpServletResponse response) throws IOException {
+		return new ResponseEntity<Object>(siteHitCounter, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/s/{randomstring}", method = RequestMethod.GET)
 	public void getFullUrl(HttpServletResponse response, @PathVariable("randomstring") String randomString)
 			throws IOException {
+		siteHitCounter = siteHitCounter + 1;
 		response.sendRedirect(shortenUrlList.get(randomString).getFull_url());
 	}
 
