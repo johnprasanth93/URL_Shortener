@@ -50,7 +50,7 @@ public class ShortURLRestapiController {
 		siteHitCounter = siteHitCounter + 1;
 		LOGGER.debug("+++++++++++++ Create Short URL API has been triggered ++++++++++");
 		HttpServletRequest tmp = request;
-		String hostname = tmp.getLocalName();
+		String hostname = "localhost";
 		int port = tmp.getLocalPort();
 		String randomChar = getRandomChars();
 		setShortUrl(randomChar, shortenUrl, hostname, port);
