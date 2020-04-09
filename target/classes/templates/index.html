@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1" />
+<link data-require="bootstrap-css@3.2.0" data-semver="3.2.0"
+	rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+<link href="css/styles.css" rel="stylesheet" />
+<script data-require="angularjs@1.3.6" data-semver="1.3.6"
+	src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.6/angular.min.js"></script>
+<script data-require="jquery@2.1.4" data-semver="2.1.4"
+	src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="js/custom.js"></script>
+<title>URL Shorten Application</title>
+</head>
+<body ng-app="demo">
+	<div class="containerNew">
+
+		<div class="starter-template">
+			<img class="logo" alt="Neueda Logo" src="images/Neueda-logo.png">
+			<h1>URL Shortner Simulator</h1>
+		</div>
+
+	</div>
+	<!-- /.container -->
+	<form name="inputForm" novalidate role="form">
+		<div class="container">
+			<div class="mainContent" ng-controller="EmployeeCtrl">
+
+				<div class="form-group">
+					<label class="lableNew">Source URL : </label> <input type="text"
+						name="fullURL" ng-model="fullURL"
+						placeholder="eg:http://johnsinnovation.com" required /> <label
+						class="lableNew">Shortened URL : </label> <input type="text"
+						name="short_url" ng-model="short_url"
+						placeholder="Shortened URL will be displayed here !!!"
+						disabled=True />
+					<button type="submit" class="btn btn-primary buttonNew"
+						ng-click="OnSave(inputForm)">Submit</button>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<h1>List of short URLS generated</h1>
+						<p ng-repeat="url in allURLS">{{url}}</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</form>
+	<div class="footer-template">
+		<p>Copyrights Neueda Pvt,Ltd. 2020 @ All rights reserved</p>
+	</div>
+</body>
+</html>
