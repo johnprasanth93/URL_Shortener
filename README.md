@@ -10,9 +10,9 @@ This prototype had been developed with spring boot and Thyme leaf frameworks. Ma
 4. Spring Tool Suite (STS) as IDE in order to to further development on the source code
 
 # How to execute:
-1. Clone the repository to your local
-2. Get to the folder where pom.xml is present and run the below command <b>mvn clean install</b> or execute the jar file found in this location <b>URL_Shortener/target/URL_short_Simulator-0.0.1-SNAPSHOT.jar</b>
-3. Run the jar file named URL_short_Simulator-0.0.1-SNAPSHOT.jar using <b>java -jar URL_short_Simulator-0.0.1-SNAPSHOT.jar</b> command
+1. Clone the repository to your local. Paste the jar file found in <b>URL_Shortener/target/URL_short_Simulator-0.0.1-SNAPSHOT.jar</b> into the folder where <b>pom.xml</b> is present and execute it
+2. Get to the folder where pom.xml is present and run the below command <b>mvn clean install</b> to generate a new jar
+3. Execute the jar file named URL_short_Simulator-0.0.1-SNAPSHOT.jar using <b>java -jar URL_short_Simulator-0.0.1-SNAPSHOT.jar</b> command
 4. once server is started. Go to http://localhost:8085 to load the application (This port number can be customised by changing the <b>server.port</b> property in <b>application.properties file</b> )
 5. <b>Swagger</b> documentation is also being provided alon with it.checkout http://localhost:8085/swagger-ui.html to get the list of Rest API endpoints and also to try executing it.
 6. Logging mechanism is used to log sensitive method executions to diagnose if any issue occurs in future. Refer <b>application.log</b> file
